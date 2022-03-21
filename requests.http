@@ -1,0 +1,29 @@
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+  "name": "evan",
+  "email": "evan@evan.evan",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+###
+POST http://localhost:3000/sessions
+content-type: application/json
+
+{
+  "email": "evan@evan.evan",
+  "password": "password"
+}
+
+###
+POST http://localhost:3000/dogs
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDc5Nzk1Njl9.LGI9EPpOrfbF-2HfN0qut7VMxe42JI_YiQd1yfO09hE
+content-type: application/json
+
+{
+  "name": "Buttercup",
+  "age": 17,
+  "breed": "teacup poodle"
+}
