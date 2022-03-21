@@ -8,16 +8,16 @@ content-type: application/json
   "password_confirmation": "password"
 }
 
-###
+### Log In Victoria
 POST http://localhost:3000/sessions
 content-type: application/json
 
 {
-  "email": "evan@evan.evan",
+  "email": "visforvictoria@v.com",
   "password": "password"
 }
 
-###
+### Create Dog Evan
 POST http://localhost:3000/dogs
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDc5Nzk1Njl9.LGI9EPpOrfbF-2HfN0qut7VMxe42JI_YiQd1yfO09hE
 content-type: application/json
@@ -27,3 +27,22 @@ content-type: application/json
   "age": 17,
   "breed": "teacup poodle"
 }
+
+### Delete Dog Evan
+DELETE http://localhost:3000/dogs/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDc5Nzk1Njl9.LGI9EPpOrfbF-2HfN0qut7VMxe42JI_YiQd1yfO09hE
+
+### Update Dog Evan
+PATCH http://localhost:3000/dogs/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDc5Nzk1Njl9.LGI9EPpOrfbF-2HfN0qut7VMxe42JI_YiQd1yfO09hE
+content-type: application/json
+
+{
+  "name": "Tinkerbell",
+  "age": "18",
+  "breed": "toy poodle"
+}
+
+### Index Evan
+GET http://localhost:3000/dogs
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDc5Nzk1Njl9.LGI9EPpOrfbF-2HfN0qut7VMxe42JI_YiQd1yfO09hE
