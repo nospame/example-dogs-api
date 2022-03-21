@@ -4,7 +4,7 @@ class DogsController < ApplicationController
       dogs = Dog.where(user_id: current_user.id)
       render json: dogs.as_json
     else
-      render json: {message: "User must be logged in to view dogs."}
+      render json: {message: "User must be logged in to view dogs."}, status: :unauthorized
     end
   end
 
@@ -19,30 +19,30 @@ class DogsController < ApplicationController
       dog.save
       render json: {message: "Dog created."}
     else
-      render json: {message: "User must be logged in to create new dogs."}
+      render json: {message: "User must be logged in to create new dogs."}, status: :unauthorized
     end
   end
 
   def update
     dog = Dog.find_by(id: params[:id])
-    if current_user && dog.user_id == current_user.id
+    if dog.user == current_user
       dog.name = params[:name] || dog.name
       dog.age = params[:age] || dog.age
       dog.breed = params[:breed] || dog.breed
       dog.save
       render json: {message: "Dog updated."}
     else
-      render json: {message: "You cannot change a dog that is not yours."}
+      render json: {message: "You cannot change a dog that is not yours."}, status: :unauthorized
     end
   end
 
   def destroy
     dog = Dog.find_by(id: params[:id])
-    if current_user && dog.user_id == current_user.id
+    if dog.user == current_user
       dog.destroy
       render json: {message: "Dog deleted."}
     else
-      render json: {message: "You cannot delete a dog that is not yours."}
+      render json: {message: "You cannot delete a dog that is not yours."}, status: :unauthorized
     end
   end
 end
